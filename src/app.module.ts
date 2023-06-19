@@ -7,6 +7,7 @@ import { RolesModule } from './roles/roles.module';
 import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/users-roles.model";
 import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
     imports: [
@@ -26,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
         UsersModule,
         RolesModule,
         AuthModule,
+        AdminModule,
     ],
 })
 export class AppModule{}

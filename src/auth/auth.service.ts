@@ -33,7 +33,7 @@ export class AuthService {
         const user = await this.validate(userDto)
         return this.generateToken(user)
     }
-    
+
     async registration(userDto: CreateUserDto){
         const candidate = await this.userService.getUserByEmail(userDto.email)
 
@@ -46,5 +46,7 @@ export class AuthService {
         return this.generateToken(user)
     }
 
+
+    
 
 }
