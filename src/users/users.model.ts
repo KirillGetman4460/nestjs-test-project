@@ -1,8 +1,10 @@
-import { Column, Model, Table,DataType } from "sequelize-typescript";
+import { Column, Model, Table,DataType,BelongsToMany } from "sequelize-typescript";
+import { Role } from "src/roles/roles.model";
 import { ApiProperty } from '@nestjs/swagger';
 import {UserCreationAttrs} from "../interfaces/user"
+import { UserRoles } from "../roles/users-roles.model";
 
-@Table({tableName:"users2"})
+@Table({tableName:"users"})
 export class User extends Model<User,UserCreationAttrs>{
     @ApiProperty({example:'1',description:"Уникальный id пользователя"})
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
@@ -23,4 +25,7 @@ export class User extends Model<User,UserCreationAttrs>{
     @ApiProperty({example:'Пример текста',description:"Причина бана"})
     @Column({type: DataType.STRING, allowNull: true})
     banReason: string;
+
+    @BelongsToMany(() => Role, () => UserRoles)
+    roles:Role[]
 }
