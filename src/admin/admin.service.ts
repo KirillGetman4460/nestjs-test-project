@@ -16,7 +16,7 @@ export class AdminService {
 
         const user = await this.userService.getUserByEmail(decodedToken.email);
 
-        const hasUserRole = user.roles.some(role => role.value === "user");
+        const hasUserRole = user.roles.some(role => role.value === "admin");
 
         if(hasUserRole){
             return this.userService.getAllUsers()
@@ -24,6 +24,6 @@ export class AdminService {
         return null
     }
     async banUser(userDto: CreateUserDto){
-
+        
     }
 }
